@@ -1,0 +1,43 @@
+﻿version: '3'
+
+services:
+  database:
+    image: 'postgres:latest'
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: NerdStore
+    volumes:
+      - ./data/:/var/lib/postgresql/data/
+
+  database_ui:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "user@localhost.com"
+      PGADMIN_DEFAULT_PASSWORD: "postgres"
+    ports:
+      - "8000:80"
+    depends_on:
+      - database
+
+  nerdstore_identity:
+    image: nerdstore_identity
+    build:
+      dockerfile: Dockerfile.development
+      context: ./src/services/NSE.Identity.API
+    ports:
+      - 8081:8081
+    depends_on:
+      - database
+    volumes:
+      - ./src/services/NSE.Identity.API:/app
+    command: "dotnet watch run --no-restore -v --project /app/NSE.Identity.API.csproj --launch-profile Docker"
+    expose:
+      - 8081
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      DOTNET_USE_POLLING_FILE_WATCHER: true
+      DATABASE_CONNECTION: "Server=database;Port=5432;Database=NerdStore;User Id=postgres;Password=postgres;"
+ 
