@@ -10,18 +10,34 @@ up_build:
 down:
 	docker-compose down
 
-.PHONY: logs_identity
-logs_identity:
-	docker logs -f nerdstoreenterprise-nerdstore_identity-1
-
 .PHONY: restore_csproj
 restore_csproj:
 	dotnet restore ./src/services/NSE.Identity.API/NSE.Identity.API.csproj
 
-.PHONY: createmigration
-create_migration_identity:
+.PHONY: project_reference
+project_reference:
+	dotnet add $(1) reference $(2)
+
+.PHONY: identity_create_migration
+identity_create_migration:
 	dotnet ef migrations add NerdStore -s ./src/services/NSE.Identity.API -p ./src/services/NSE.Identity.API
 
-.PHONY: migrate
-migrate_identity:
-	 dotnet ef database update -s ./src/services/NSE.Identity.API -p ./src/services/NSE.Identity.API
+.PHONY: identity_migrate
+identity_migrate:
+	dotnet ef database update -s ./src/services/NSE.Identity.API -p ./src/services/NSE.Identity.API
+
+.PHONY: identity_logs
+identity_logs:
+	docker logs -f nerdstoreenterprise-nerdstore_identity-1
+
+.PHONY: catalog_create_migration
+catalog_create_migration:
+	dotnet ef migrations add NerdStore -s ./src/services/NSE.Catalog.API -p ./src/services/NSE.Catalog.API
+
+.PHONY: catalog_migrate
+catalog_migrate:
+	dotnet ef database update -s ./src/services/NSE.Catalog.API -p ./src/services/NSE.Catalog.API
+
+.PHONY: catalog_logs
+catalog_logs:
+	docker logs -f nerdstoreenterprise-nerdstore_catalog-1

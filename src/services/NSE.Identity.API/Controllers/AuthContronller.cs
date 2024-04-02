@@ -110,13 +110,13 @@ namespace NSE.Identity.API.Controllers
         private string EncodedToken(ClaimsIdentity identityClaims)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
+            var key = Encoding.ASCII.GetBytes(_appSettings?.Secret ?? "307ca26b-50bd-44cb-afd3-b15ab14eb3fe");
             var token = tokenHandler.CreateToken(new SecurityTokenDescriptor
             {
-                Issuer = _appSettings.Issuer,
-                Audience = _appSettings.ValidIn,
+                Issuer = _appSettings?.Issuer,
+                Audience = _appSettings?.ValidIn,
                 Subject = identityClaims,
-                Expires = DateTime.UtcNow.AddHours(_appSettings.ExpirationHours),
+                Expires = DateTime.UtcNow.AddHours(_appSettings?.ExpirationHours ?? 12),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             });
 

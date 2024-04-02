@@ -20,7 +20,7 @@ namespace NSE.Configuration
             builder.Services.Configure<AppSettings>(appSettingsSection);
 
             var appSettings = appSettingsSection.Get<AppSettings>();
-            var key = Encoding.ASCII.GetBytes(appSettings.Secret);
+            var key = Encoding.ASCII.GetBytes(appSettings?.Secret ?? "307ca26b-50bd-44cb-afd3-b15ab14eb3fe");
 
             builder.Services.AddAuthentication(Options => 
             {
@@ -35,9 +35,9 @@ namespace NSE.Configuration
                     ValidateIssuerSigningKey = true,
                     IssuerSigningKey = new SymmetricSecurityKey(key),
                     ValidateIssuer = true,
-                    ValidIssuer = appSettings.Issuer,
+                    ValidIssuer = appSettings?.Issuer,
                     ValidateAudience = true,
-                    ValidAudience = appSettings.ValidIn,
+                    ValidAudience = appSettings?.ValidIn,
                     // ValidateLifetime = true,
                     // ClockSkew = TimeSpan.Zero
                 };

@@ -8,7 +8,7 @@ namespace NSE.Identity.API.Controllers
     {
         protected ICollection<string> Errors = new List<string>();
 
-        protected ActionResult CustomResponse(object result = null)
+        protected ActionResult CustomResponse(object? result = null)
         {
             if (IsValidOperation())
             {

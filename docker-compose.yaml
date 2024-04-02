@@ -40,4 +40,23 @@ services:
       ASPNETCORE_ENVIRONMENT: Development
       DOTNET_USE_POLLING_FILE_WATCHER: true
       DATABASE_CONNECTION: "Server=database;Port=5432;Database=NerdStore;User Id=postgres;Password=postgres;"
+
+  nerdstore_catalog:
+    image: nerdstore_catalog
+    build:
+      dockerfile: Dockerfile.development
+      context: ./src/services/NSE.Catalog.API
+    ports:
+      - 8082:8081
+    depends_on:
+      - database
+    volumes:
+      - ./src/services/NSE.Catalog.API:/app
+    command: "dotnet watch run --no-restore -v --project /app/NSE.Catalog.API.csproj --launch-profile Docker"
+    expose:
+      - 8082
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      DOTNET_USE_POLLING_FILE_WATCHER: true
+      DATABASE_CONNECTION: "Server=database;Port=5432;Database=NerdStore;User Id=postgres;Password=postgres;"
  
