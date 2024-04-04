@@ -1,4 +1,4 @@
-namespace NSE.Configuration
+namespace NSE.Catalog.API.Configurations
 {
     public static class ApiConfig
     {
@@ -6,6 +6,14 @@ namespace NSE.Configuration
         {
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddControllers();
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("Total",
+                    builder => builder
+                        .AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader());
+            });
 
             return builder;
         }

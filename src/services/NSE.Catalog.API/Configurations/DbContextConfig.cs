@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using NSE.Catalog.API.Data;
 
-namespace NSE.Configuration
+namespace NSE.Catalog.API.Configurations
 {
     public static class DbContextConfig
     {

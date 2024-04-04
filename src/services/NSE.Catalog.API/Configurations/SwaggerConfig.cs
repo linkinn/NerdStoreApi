@@ -1,4 +1,4 @@
-namespace NSE.Configuration
+namespace NSE.Catalog.API.Configurations
 {
     public static class SwaggerConfig
     {

@@ -1,17 +1,12 @@
-using NSE.Catalog.API.Data;
-using NSE.Catalog.API.Data.Repositories;
-using NSE.Catalog.API.Models;
-using NSE.Configuration;
+using NSE.Catalog.API.Configurations;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder
     .AddApiConfig()
     .AddDbContextConfig()
-    .AddSwaggerConfig();
-
-builder.Services.AddScoped<IProductRepository, ProductRepository>();
-builder.Services.AddScoped<CatalogDbContext>();
+    .AddSwaggerConfig()
+    .AddDependencyInjectionConfig();
 
 var app = builder.Build();
 
