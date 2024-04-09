@@ -4,6 +4,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder
     .AddApiConfig()
+    .AddIdendityConfig()
     .AddDbContextConfig()
     .AddSwaggerConfig()
     .AddDependencyInjectionConfig();
@@ -17,7 +18,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
-
 app.Run();

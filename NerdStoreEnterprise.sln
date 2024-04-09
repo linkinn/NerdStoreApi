@@ -47,6 +47,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Itens de Solução", "Itens
 		Makefile = Makefile
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NSE.WebAPI.Core", "src\building_blocks\NSE.WebAPI.Core\NSE.WebAPI.Core.csproj", "{A07AFA73-E13B-4341-B4CD-3111150FAC05}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,10 @@ Global
 		{72DE8683-A87A-470F-897C-71288777DF31}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{72DE8683-A87A-470F-897C-71288777DF31}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{72DE8683-A87A-470F-897C-71288777DF31}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A07AFA73-E13B-4341-B4CD-3111150FAC05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A07AFA73-E13B-4341-B4CD-3111150FAC05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A07AFA73-E13B-4341-B4CD-3111150FAC05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A07AFA73-E13B-4341-B4CD-3111150FAC05}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -103,6 +109,7 @@ Global
 		{0E0388B9-CFD4-4491-90E8-34286C42C186} = {0D83908E-B650-4169-BEB8-DBD4DBDA2EBC}
 		{2629695A-9935-4C84-A59C-65060486268D} = {E27AEE3E-26C3-40CA-B9ED-86C34C305F9B}
 		{72DE8683-A87A-470F-897C-71288777DF31} = {33B9BC0F-E85F-4FFF-981F-895E12DF0202}
+		{A07AFA73-E13B-4341-B4CD-3111150FAC05} = {AFD82D3B-CD01-4BCB-8958-7C11735FCCBE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EE592B29-50A3-43BF-B201-D352EEB981E9}

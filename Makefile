@@ -10,13 +10,13 @@ up_build:
 down:
 	docker-compose down
 
-.PHONY: restore_csproj
-restore_csproj:
-	dotnet restore ./src/services/NSE.Identity.API/NSE.Identity.API.csproj
-
 .PHONY: project_reference
 project_reference:
 	dotnet add $(1) reference $(2)
+
+.PHONY: identity_restore_csproj
+identity_restore_csproj:
+	dotnet restore ./src/services/NSE.Identity.API/NSE.Identity.API.csproj
 
 .PHONY: identity_create_migration
 identity_create_migration:
